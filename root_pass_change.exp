@@ -1,0 +1,17 @@
+#! /usr/bin/expect
+
+## password information
+## you can change the password what you want
+set password startroot
+
+## auto password setup
+spawn bash -c "passwd root"
+expect -re "Enter new UNIX password:"
+send "$password\r"
+expect -re "Retype new UNIX password:"
+send "$password\r"
+interact
+
+## finish the auto password insert
+puts "root password has been changed!"
+
